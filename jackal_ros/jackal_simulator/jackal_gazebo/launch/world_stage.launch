@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+  <launch>
+    <arg name="env_name" default="basic"/>
+    <!-- \param "vlp_laser" launches Jackal with Velodyne VLP-16 LiDAR sensor; otherwise, a 2D lider will be launched  -->
+    <arg name="vlp_laser" default="True" />
+
+    <!-- Launch Jackal within Gazebo world with the onboard sensor-->
+    <include file="$(find jackal_gazebo)/launch/jackal_world.launch">
+      <arg name="env_name" value="$(arg env_name)"/>
+      <arg name="vlp_laser" value="$(arg vlp_laser)"/>
+      <remap from="odom" to="ground_truth/odom" />
+    </include>
+  </launch>

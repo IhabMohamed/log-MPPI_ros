@@ -1,0 +1,9 @@
+- git: {local-name: jackal, uri: 'https://github.com/jackal/jackal', version: indigo-devel}
+- git: {local-name: jackal_desktop, uri: 'https://github.com/jackal/jackal_desktop',
+    version: indigo-devel}
+- git: {local-name: jackal_simulator, uri: 'https://github.com/jackal/jackal_simulator',
+    version: indigo-devel}
+- git: {local-name: robot_localization, uri: 'https://github.com/cra-ros-pkg/robot_localization',
+    version: master}
+- git: {local-name: ros_controllers, uri: 'https://github.com/jackal/ros_controllers',
+    version: diff-drive-multiwheel}

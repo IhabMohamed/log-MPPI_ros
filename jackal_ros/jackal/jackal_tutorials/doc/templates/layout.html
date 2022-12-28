@@ -1,0 +1,4 @@
+{# Overriding layout.html to add CSS. See: http://stackoverflow.com/a/23466546 #}
+{# Import the theme's layout. #}
+{% extends "!layout.html" %}
+{% set css_files = css_files + ['_static/clearpath.css'] %}

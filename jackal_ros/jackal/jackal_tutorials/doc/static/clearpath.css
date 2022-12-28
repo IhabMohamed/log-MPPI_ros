@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'dp';
+    src: url('http://clearpath.wpengine.netdna-cdn.com/wp-content/themes/clearpath/font/dp_reg.otf') format('opentype'),
+         url('http://clearpath.wpengine.netdna-cdn.com/wp-content/themes/clearpath/font/dp_reg.woff') format('woff'),
+         url('http://clearpath.wpengine.netdna-cdn.com/wp-content/themes/clearpath/font/dp_reg.ttf') format('truetype'),
+         url('http://clearpath.wpengine.netdna-cdn.com/wp-content/themes/clearpath/font/dp_reg.svg#webfont') format('svg'),
+         url('http://clearpath.wpengine.netdna-cdn.com/wp-content/themes/clearpath/font/dp_reg.eot'); /* IE9 Compat Modes */
+}
+@font-face {
+    font-family: 'dp';
+    font-weight: bold;
+    src: url('http://clearpath.wpengine.netdna-cdn.com/wp-content/themes/clearpath/font/dp_bold.otf') format('opentype'),
+         url('http://clearpath.wpengine.netdna-cdn.com/wp-content/themes/clearpath/font/dp_bold.woff') format('woff'),
+         url('http://clearpath.wpengine.netdna-cdn.com/wp-content/themes/clearpath/font/dp_bold.ttf') format('truetype'),
+         url('http://clearpath.wpengine.netdna-cdn.com/wp-content/themes/clearpath/font/dp_bold.svg#webfont') format('svg'),
+         url('http://clearpath.wpengine.netdna-cdn.com/wp-content/themes/clearpath/font/dp_bold.eot'); /* IE9 Compat Modes */ 
+}
+
+body {
+  font-family: 'dp', sans;
+}
+
+div.related {
+  background-color: #555;
+}
+
+div.related a {
+  color: #fff;
+}
+
+div.body h1, div.body h2, div.body h3, div.body h4, div.body h5, div.body h6
+{
+  background-color: #eb2;
+  /*font-weight: bold; */
+  /*color: rgba(243, 214, 0, 1);*/
+  /*background-color: black; */
+}
+
+div.body h1, div.body h2, div.body h3, div.body h4, div.body h5, div.body h6,
+div.sphinxsidebar h3, div.sphinxsidebar h4 {
+  font-family: 'dp', sans;
+  text-shadow: none;
+  /* background-color: rgba(243, 214, 0, 1); */
+}
+
+.sphinxsidebar a.current {
+  font-weight: bold;
+}

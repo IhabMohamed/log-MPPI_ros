@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <param name="use_gui" value="true"/>
+  <arg name="config" default="robot" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find jackal_viz)/rviz/$(arg config).rviz" />
+</launch>

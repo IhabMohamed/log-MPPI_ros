@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+  <name>jackal_desktop</name>
+  <version>0.4.0</version>
+  <description>Packages for working with Jackal from a ROS desktop.</description>
+
+  <maintainer email="mpurvis@clearpathrobotics.com">Mike Purvis</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://wiki.ros.org/jackal_desktop</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>jackal_msgs</run_depend>
+  <run_depend version_gte="0.3.1">jackal_viz</run_depend>
+
+  <export><metapackage/></export>
+</package>

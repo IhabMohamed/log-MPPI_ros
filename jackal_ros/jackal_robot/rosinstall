@@ -1,0 +1,2 @@
+- git: {local-name: jackal_robot, uri: 'https://github.com/jackal/jackal_robot', version: indigo-devel}
+- git: {local-name: jackal, uri: 'https://github.com/jackal/jackal', version: indigo-devel}

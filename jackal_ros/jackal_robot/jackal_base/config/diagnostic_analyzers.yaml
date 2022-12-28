@@ -1,0 +1,31 @@
+analyzers:
+  jackal:
+    type: diagnostic_aggregator/AnalyzerGroup
+    path: Jackal Base
+    analyzers:
+      general:
+        type: diagnostic_aggregator/GenericAnalyzer
+        path: General
+        remove_prefix: 'jackal_node'
+        timeout: 5.0
+        expected: [
+          'jackal_node: General',
+          'jackal_node: Battery',
+          'jackal_node: User voltage supplies',
+          'jackal_node: Current consumption',
+          'jackal_node: Power consumption' ]
+      sensors:
+        type: diagnostic_aggregator/GenericAnalyzer
+        path: Sensor Topics
+        remove_prefix: 'jackal_node'
+        timeout: 5.0
+        expected: [
+          'jackal_node: /imu/data_raw topic status',
+          'jackal_node: /navsat/nmea_sentence topic status' ]
+      teleop:
+        type: diagnostic_aggregator/GenericAnalyzer
+        path: Bluetooth Joystick
+        remove_prefix: 'bluetooth_teleop/joy_node'
+        timeout: 5.0
+        expected: [
+          'bluetooth_teleop/joy_node: Joystick Driver Status' ]

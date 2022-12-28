@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<package>
+  <name>jackal_base</name>
+  <version>0.6.1</version>
+  <description>Jackal's mobility and sensor base.</description>
+
+  <maintainer email="mpurvis@clearpathrobotics.com">Mike Purvis</maintainer>
+  <author email="mpurvis@clearpathrobotics.com">Mike Purvis</author>
+
+  <license>BSD</license>
+
+  <url type="website">http://wiki.ros.org/Robots/Jackal</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>controller_manager</build_depend>
+  <build_depend>diagnostic_updater</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>hardware_interface</build_depend>
+  <build_depend>jackal_msgs</build_depend>
+  <build_depend>nmea_msgs</build_depend>
+  <build_depend>realtime_tools</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>roslaunch</build_depend>
+  <build_depend>roslint</build_depend>
+  <build_depend>rosserial_server</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>teleop_twist_joy</build_depend>
+  <build_depend>topic_tools</build_depend>
+
+  <run_depend>controller_manager</run_depend>
+  <run_depend>diagnostic_aggregator</run_depend>
+  <run_depend>diagnostic_updater</run_depend>
+  <run_depend>diff_drive_controller</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>imu_filter_madgwick</run_depend>
+  <run_depend version_gte="0.5">jackal_control</run_depend>
+  <run_depend version_gte="0.5">jackal_description</run_depend>
+  <run_depend version_gte="0.5">jackal_msgs</run_depend>
+  <run_depend>nmea_msgs</run_depend>
+  <run_depend>nmea_navsat_driver</run_depend>
+  <run_depend>python-scipy</run_depend>
+  <run_depend>realtime_tools</run_depend>
+  <run_depend>rosserial_python</run_depend>
+  <run_depend>rosserial_server</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>teleop_twist_joy</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>topic_tools</run_depend>
+
+  <export>
+  </export>
+</package>

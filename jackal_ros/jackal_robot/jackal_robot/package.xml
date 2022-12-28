@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <name>jackal_robot</name>
+  <version>0.6.1</version>
+  <description>Metapackage of software to install on Jackal.</description>
+
+  <maintainer email="mpurvis@clearpathrobotics.com">Mike Purvis</maintainer>
+  <author email="mpurvis@clearpathrobotics.com">Mike Purvis</author>
+
+  <license>BSD</license>
+
+  <url type="website">http://wiki.ros.org/Robots/Jackal</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend version_gte="0.3">jackal_bringup</run_depend>
+  <run_depend>jackal_firmware</run_depend>
+
+  <export>
+    <metapackage />
+  </export>
+</package>

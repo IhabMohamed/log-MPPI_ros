@@ -1,0 +1,221 @@
+<!--
+Launch driver components of Jackal's supported accessories.
+
+Be careful that the defaults in this file are kept aligned with those
+in the URDF. See jackal_description/urdf/accessories.urdf.xacro.
+-->
+<launch>
+  <!--
+    Primary and secondary 2D lasers.  Model defined by JACKAL_LASER_MODEL and JACKAL_LASER_SECONDARY_MODEL.
+    Valid models:
+      - lms1xx (default)  :: SICK LMS1xx
+      - ust10             :: Hokuyo UST10
+  -->
+  <group if="$(optenv JACKAL_LASER 0)">
+    <arg name="lidar_model" value="$(optenv JACKAL_LASER_MODEL lms1xx)" />
+    <group if="$(eval arg('lidar_model') == 'lms1xx')">
+      <node pkg="lms1xx" name="lms1xx" type="LMS1xx_node">
+        <param name="host" value="$(optenv JACKAL_LASER_HOST 192.168.131.20)" />
+        <param name="frame_id" value="$(optenv JACKAL_LASER_MOUNT front)_laser" />
+        <remap from="scan" to="$(optenv JACKAL_LASER_TOPIC front/scan)" />
+      </node>
+    </group>
+    <group if="$(eval arg('lidar_model') == 'ust10')">
+      <node pkg="urg_node" name="hokuyo" type="urg_node">
+        <param name="ip_address" value="$(optenv JACKAL_LASER_HOST 192.168.131.20)" />
+        <param name="frame_id" value="$(optenv JACKAL_LASER_MOUNT front)_laser" />
+        <remap from="scan" to="$(optenv JACKAL_LASER_TOPIC front/scan)" />
+      </node>
+    </group>
+  </group>
+  <group if="$(optenv JACKAL_LASER_SECONDARY 0)">
+    <arg name="lidar2_model" value="$(optenv JACKAL_LASER_SECONDARY_MODEL lms1xx)" />
+    <group if="$(eval arg('lidar2_model') == 'lms1xx')">
+      <node pkg="lms1xx" name="lms1xx_2" type="LMS1xx_node">
+        <param name="host" value="$(optenv JACKAL_LASER_SECONDARY_HOST 192.168.131.21)" />
+        <param name="frame_id" value="$(optenv JACKAL_LASER_SECONDARY_MOUNT rear)_laser" />
+        <remap from="scan" to="$(optenv JACKAL_LASER_SECONDARY_TOPIC rear/scan)" />
+      </node>
+    </group>
+    <group if="$(eval arg('lidar2_model') == 'ust10')">
+      <node pkg="urg_node" name="hokuyo_2" type="urg_node">
+        <param name="ip_address" value="$(optenv JACKAL_LASER_SECONDARY_HOST 192.168.131.21)" />
+        <param name="frame_id" value="$(optenv JACKAL_LASER_SECONDARY_RPY_MOUNT rear)_laser" />
+        <remap from="scan" to="$(optenv JACKAL_LASER_SECONDARY_TOPIC rear/scan)" />
+      </node>
+    </group>
+  </group>
+
+  <!-- Optional front/rear UST-10 lidars mounted to the accessory fenders -->
+  <group if="$(optenv JACKAL_FRONT_ACCESSORY_FENDER 0)">
+    <group if="$(optenv JACKAL_FRONT_FENDER_UST10 0)">
+      <node pkg="urg_node" name="front_fender_hokuyo" type="urg_node">
+        <param name="ip_address" value="$(optenv JACKAL_FRONT_LASER_HOST 192.168.131.20)" />
+        <param name="frame_id" value="front_laser" />
+        <remap from="scan" to="$(optenv JACKAL_FRONT_LASER_TOPIC front/scan)" />
+      </node>
+    </group>
+  </group>
+  <group if="$(optenv JACKAL_REAR_ACCESSORY_FENDER 0)">
+    <group if="$(optenv JACKAL_REAR_FENDER_UST10 0)">
+      <node pkg="urg_node" name="rear_fender_hokuyo" type="urg_node">
+        <param name="ip_address" value="$(optenv JACKAL_REAR_LASER_HOST 192.168.131.21)" />
+        <param name="frame_id" value="rear_laser" />
+        <remap from="scan" to="$(optenv JACKAL_REAR_LASER_TOPIC rear/scan)" />
+      </node>
+    </group>
+  </group>
+
+  <!-- Optional 3D lidar -->
+  <group if="$(optenv JACKAL_LASER_3D 0)">
+    <arg name="lidar_3d_model" value="$(optenv JACKAL_LASER_3D_MODEL vlp16)" />
+    <group if="$(eval arg('lidar_3d_model') == 'vlp16')">
+      <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch">
+        <arg name="device_ip" value="$(optenv JACKAL_LASER_3D_HOST 192.168.131.20)" />
+        <remap from="velodyne_points" to="$(optenv JACKAL_LASER_3D_TOPIC mid/points)" />
+      </include>
+    </group>
+  </group>
+
+  <!-- Optional front/rear UST-10 lidars mounted to the accessory fenders -->
+  <group if="$(optenv JACKAL_FRONT_ACCESSORY_FENDER 0)">
+    <group if="$(optenv JACKAL_FRONT_FENDER_UST10 0)">
+      <node pkg="urg_node" name="front_fender_hokuyo" type="urg_node">
+        <param name="ip_address" value="$(optenv JACKAL_FRONT_LASER_HOST 192.168.131.20)" />
+        <param name="frame_id" value="front_laser" />
+        <remap from="scan" to="$(optenv JACKAL_FRONT_LASER_TOPIC front/scan)" />
+      </node>
+    </group>
+  </group>
+  <group if="$(optenv JACKAL_REAR_ACCESSORY_FENDER 0)">
+    <group if="$(optenv JACKAL_REAR_FENDER_UST10 0)">
+      <node pkg="urg_node" name="rear_fender_hokuyo" type="urg_node">
+        <param name="ip_address" value="$(optenv JACKAL_REAR_LASER_HOST 192.168.131.21)" />
+        <param name="frame_id" value="rear_laser" />
+        <remap from="scan" to="$(optenv JACKAL_REAR_LASER_TOPIC rear/scan)" />
+      </node>
+    </group>
+  </group>
+
+  <!-- Optional Point Grey Bumblebee2 camera, typically front-facing. -->
+  <group if="$(optenv JACKAL_BB2 0)" ns="camera">
+    <node pkg="nodelet" type="nodelet" name="bumblebee2_nodelet_manager" args="manager" />
+
+    <node pkg="nodelet" type="nodelet" name="bumblebee2_nodelet"
+          args="load pointgrey_camera_driver/PointGreyStereoCameraNodelet bumblebee2_nodelet_manager" >
+      <param name="frame_id" value="$(optenv JACKAL_BB2_MOUNT front)_camera" />
+      <param name="frame_rate" value="15" />
+      <param name="first_namespace" value="left" />
+      <param name="second_namespace" value="right" />
+      <param name="format7_color_coding" value="raw16" />
+      <param name="serial" value="$(optenv JACKAL_BB2_SERIAL 0)" />
+
+      <!-- Use the camera_calibration package to create these files -->
+      <param name="camera_info_url" if="$(optenv JACKAL_BB2_CALIBRATION 0)"
+             value="file://$(env HOME)/.ros/camera_info/$(optenv JACKAL_BB2_SERIAL 0).yaml" />
+      <param name="second_info_url" if="$(optenv JACKAL_BB2_CALIBRATION 0)"
+             value="file://$(env HOME)/.ros/camera_info/$(optenv JACKAL_BB2_SERIAL 0)_right.yaml" />
+    </node>
+    <node pkg="nodelet" type="nodelet" name="image_proc_debayer_left"
+        args="load image_proc/debayer bumblebee_nodelet_manager">
+      <remap from="image_raw" to="left/image_raw"/>
+      <remap from="image_mono" to="left/image_mono"/>
+      <remap from="image_color" to="left/image_color"/>
+    </node>
+    <node pkg="nodelet" type="nodelet" name="image_proc_debayer_right"
+        args="load image_proc/debayer bumblebee_nodelet_manager">
+      <remap from="image_raw" to="right/image_raw"/>
+      <remap from="image_mono" to="right/image_mono"/>
+      <remap from="image_color" to="right/image_color"/>
+    </node>
+  </group>
+
+  <!-- Optional Point Grey Flea3 camera, typically front-facing. -->
+  <group if="$(optenv JACKAL_FLEA3 0)" ns="camera">
+    <node pkg="nodelet" type="nodelet" name="flea3_nodelet_manager" args="manager" />
+
+    <node pkg="nodelet" type="nodelet" name="flea3_nodelet"
+          args="load pointgrey_camera_driver/PointGreyCameraNodelet flea3_nodelet_manager" >
+      <param name="frame_id" value="$(optenv JACKAL_FLEA3_MOUNT front)_camera" />
+      <param name="serial" value="$(optenv JACKAL_FLEA3_SERIAL 0)" />
+      <param name="frame_rate" value="$(optenv JACKAL_FLEA3_FRAME_RATE 30)" />
+
+      <!-- Use the camera_calibration package to create these files -->
+      <param name="camera_info_url" if="$(optenv JACKAL_FLEA3_CALIBRATION 0)"
+             value="file://$(env HOME)/.ros/camera_info/$(optenv JACKAL_FLEA3_SERIAL 0).yaml" />
+
+    </node>
+    <node pkg="nodelet" type="nodelet" name="image_proc_debayer"
+        args="load image_proc/debayer flea3_nodelet_manager">
+    </node>
+  </group>
+
+  <!-- Optional stereo Point Grey Flea3 cameras, typically front-facing. -->
+  <group if="$(optenv JACKAL_STEREO_FLEA3 0)" ns="camera">
+
+    <group ns="left" >
+      <node pkg="nodelet" type="nodelet" name="camera_nodelet_manager" args="manager" />
+
+      <node pkg="nodelet" type="nodelet" name="camera_nodelet"
+            args="load pointgrey_camera_driver/PointGreyCameraNodelet camera_nodelet_manager" >
+            <param name="frame_id" value="$(optenv JACKAL_FLEA3_MOUNT front)_left_camera" />
+            <param name="serial" value="$(optenv JACKAL_FLEA3_LEFT_SERIAL 0)" />
+            <param name="frame_rate" value="$(optenv JACKAL_FLEA3_FRAME_RATE 30)" />
+
+            <!-- Use the camera_calibration package to create these files -->
+            <param name="camera_info_url" if="$(optenv JACKAL_FLEA3_LEFT_CALIBRATION 0)"
+                   value="file://$(env HOME)/.ros/camera_info/$(optenv JACKAL_FLEA3_LEFT_SERIAL 0).yaml" />
+      </node>
+
+      <node pkg="nodelet" type="nodelet" name="image_proc_debayer"
+          args="load image_proc/debayer camera_nodelet_manager">
+      </node>
+    </group>
+
+    <group ns="right" >
+      <node pkg="nodelet" type="nodelet" name="camera_nodelet_manager" args="manager" />
+
+      <node pkg="nodelet" type="nodelet" name="camera_nodelet"
+            args="load pointgrey_camera_driver/PointGreyCameraNodelet camera_nodelet_manager" >
+            <param name="frame_id" value="$(optenv JACKAL_FLEA3_MOUNT front)_right_camera" />
+            <param name="serial" value="$(optenv JACKAL_FLEA3_RIGHT_SERIAL 0)" />
+            <param name="frame_rate" value="$(optenv JACKAL_FLEA3_FRAME_RATE 30)" />
+
+            <!-- Use the camera_calibration package to create these files -->
+            <param name="camera_info_url" if="$(optenv JACKAL_FLEA3_RIGHT_CALIBRATION 0)"
+                   value="file://$(env HOME)/.ros/camera_info/$(optenv JACKAL_FLEA3_RIGHT_SERIAL 0).yaml" />
+      </node>
+
+      <node pkg="nodelet" type="nodelet" name="image_proc_debayer"
+          args="load image_proc/debayer camera_nodelet_manager">
+      </node>
+
+    </group>
+
+    <node pkg="stereo_image_proc" type="stereo_image_proc" name="stereo_image_proc">
+      <param name="approximate_sync" value="true"/>
+    </node>
+
+  </group>
+
+
+  <!-- Optional upgraded GPS receiver. -->
+  <group ns="navsat/upgrade" if="$(optenv JACKAL_NAVSAT 0)">
+    <node pkg="nmea_comms" type="serial_node" name="nmea_serial_node" output="screen">
+      <param name="port" value="$(optenv JACKAL_NAVSAT_PORT /dev/clearpath/gps)" />
+      <param name="baud" value="$(optenv JACKAL_NAVSAT_BAUD 57600)" />
+      <param name="frame_id" value="$(optenv JACKAL_NAVSAT_MOUNT rear)_navsat" />
+    </node>
+
+    <!-- NMEA Interpretation -->
+    <node pkg="nmea_navsat_driver" type="nmea_topic_driver" name="nmea_topic_driver" />
+
+    <!-- Optional RTK relay -->
+    <group if="$(optenv JACKAL_NAVSAT_RTK 0)">
+      <node pkg="jackal_bringup" type="navsat_rtk_relay" name="navsat_rtk_relay"
+            args="--serial-port /dev/clearpath/rtcm
+                  --device $(optenv JACKAL_NAVSAT_RTK_DEVICE wlan0)
+                  --baud $(optenv JACKAL_NAVSAT_RTK_BAUD 57600)" />
+    </group>
+  </group>
+</launch>

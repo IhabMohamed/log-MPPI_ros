@@ -78,7 +78,7 @@ This node contains the implementation of both vanilla MPPI and log-MPPI control 
 
 ### velodyne_simulator
 URDF description and Gazebo plugins to simulate Velodyne laser scanners. If you encountered a very slow-motion of the robot in Gazebo, there are two ways to tackle this issue:
-(i) you should be sure that the `gpu` parameter in  [VLP-16.urdf.xacro] is set to `true` (we actually prefer this option), OR (ii) you can decrease the number of `samples` to let's say 500 instead of 1875 in `VLP-16.urdf.xacro`. 
+(i) you should be sure that the `gpu` parameter in  ![](velodyne_simulator/velodyne_description/urdf/VLP-16.urdf.xacro) is set to `true` (we actually prefer this option), OR (ii) you can decrease the number of `samples` to let's say 500 instead of 1875 in `VLP-16.urdf.xacro`. 
 
 ## Usage: 
 

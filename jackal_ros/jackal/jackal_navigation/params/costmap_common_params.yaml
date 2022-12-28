@@ -1,0 +1,29 @@
+map_type: costmap
+origin_z: 0.0
+z_resolution: 1
+z_voxels: 2
+
+# Added by Ihab
+#always_send_full_costmap: true
+
+obstacle_range: 5
+raytrace_range: 3
+
+publish_voxel_map: false
+transform_tolerance: 0.5
+meter_scoring: true
+
+footprint: [[-0.21, -0.165], [-0.21, 0.165], [0.21, 0.165], [0.21, -0.165]]
+footprint_padding: 0.1
+
+plugins:
+- {name: obstacles_layer, type: "costmap_2d::ObstacleLayer"}
+- {name: inflater_layer, type: "costmap_2d::InflationLayer"}
+
+obstacles_layer:
+  observation_sources: VLP_sensor scan
+  scan: {sensor_frame: front_laser, data_type: LaserScan, topic: front/scan, marking: true, clearing: true, min_obstacle_height: -2.0, max_obstacle_height: 2.0, obstacle_range: 5, raytrace_range: 3}
+  VLP_sensor: {sensor_frame: velodyne, data_type: PointCloud2, topic: mid/points, marking: true, clearing: true, min_obstacle_height: 0.3, max_obstacle_height: 0.7, obstacle_range: 8, raytrace_range: 6.0}
+
+inflater_layer:
+ inflation_radius: 0.30

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+  <launch>
+    <node name="mission_control" pkg="mission_control" type="mission_control_node.py" output="screen">
+      <param name="mission_file" type="string" value="$(find mission_control)/missions/forest1.txt" />
+      <remap from="local_costmap" to="move_base/local_costmap/costmap" /> 
+      <remap from="local_costmap_updates" to="move_base/local_costmap/costmap_updates" />
+      <!-- <remap from="scan" to="front/scan"/>  -->
+    </node>
+  </launch>

@@ -1,0 +1,37 @@
+#----------------------------------------------------#
+#   MPPI parameters for ClearPath Jackal Robot       #
+#   Author: Ihab S. Mohamed                          #
+#   Lab: VAIL, Indiana University Bloomington, USA   #
+#----------------------------------------------------# 
+
+# Set the states and control dimensions
+state_dim: 3
+control_dim: 2
+
+# Set the MPPI parameters
+samplingRate: 50.0             # Ts = 1/samplingRate in [s]
+time_horizon: 6                # time_horizon in [s]
+num_trajectories: 2496
+exploration_variance: 1200.0
+# weights: [5, 5, 2]           # For real-world (for v_max <= 1m/s)
+weights: [2.5, 2.5, 2]         # For simulation 
+collision_cost: 10000000
+footprint: 0.22
+
+# set the parameters of the Savitsky Galoy filter
+SG_window: 51
+SG_PolyOrder: 3
+
+# Set the maximum allowable velocities of the robot
+max_linear_velocity: 2          # in [m/s]
+# max_linear_velocity: 0.75     # For real-world (VAIL Lab)
+max_angular_velocity: 1.5       # in [Rad/s]
+
+# Minimum distance to goal
+minimumDistance: 0.4
+
+# Costmap parameters
+costmap_size: 240               # in [pixels]
+costmap_resolution: 0.05        # [m/cell] or Grid size
+costmap_origin_x: -6
+costmap_origin_y: -6

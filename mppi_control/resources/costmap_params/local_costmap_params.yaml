@@ -1,0 +1,11 @@
+local_costmap:
+   global_frame: map 
+   robot_base_frame: base_link
+   update_frequency: 20
+   publish_frequency: 30
+   width: 12.0
+   height: 12.0
+   resolution: 0.05
+   static_map: false
+   rolling_window: true
+   always_send_full_costmap: true

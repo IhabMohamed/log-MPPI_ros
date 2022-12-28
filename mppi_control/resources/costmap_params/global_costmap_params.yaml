@@ -1,0 +1,13 @@
+global_costmap:
+  global_frame: map
+  robot_base_frame: base_link
+  update_frequency: 5
+  publish_frequency: 1
+  width: 200.0
+  height: 200.0
+  resolution: 0.08
+  origin_x: -100.0
+  origin_y: -100.0
+  static_map: true
+  rolling_window: false
+  

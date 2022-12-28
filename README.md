@@ -6,7 +6,7 @@ This repository contains the ROS implementation of the Model Predictive Path Int
 
 With such a sampling strategy, we provide more efficient trajectories than the vanilla MPPI variants, ensuring a much better exploration of the state-space of the given system and reducing the risk of getting stuck in local minima. Moreover, a small injected noise variance can be utilized so that violating system constraints can be avoided.
 
-![MPPI: 0.1 trees/square meter forest-like env](media/demo_mppi.gif) 
+![MPPI: 0.1 trees/$$m^2$$ forest-like env](media/demo_mppi.gif "MPPI: 0.1 trees/square meter forest-like env") 
 ![log-MPPI: 0.2 trees/square meter forest-like env](media/demo_log-mppi.gif)
  
 ## Paper:

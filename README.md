@@ -46,7 +46,7 @@ Bibtex:
 	```
 	* Then, source bash configuration `source ~/.bashrc`
 * PyCUDA installation [[LINK](https://pypi.org/project/pycuda/)]
-* Jackal-specific metapackages installation for desktop and simulation [[LINK](https://www.clearpathrobotics.com/assets/guides/kinetic/jackal/simulation.html)]. Since we have done some modifications to those packages, it is highly recommended to use the provided packages in `jackal_ros` folder.
+* Jackal-specific metapackages installation for desktop and simulation [[LINK](https://www.clearpathrobotics.com/assets/guides/kinetic/jackal/simulation.html)]. Since we have done some modifications to those packages, it is highly recommended to use the provided packages in [jackal_ros](jackal_ros) directory.
 * Pedestrian Simulator (Only if you wish to test the performance with dynamic environment): pedsim_ros: https://github.com/bbrito/pedsim_ros 
 
 ## Installation Instructions:

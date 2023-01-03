@@ -39,7 +39,7 @@ Bibtex:
 	* Once CUDA is installed, the following lines should be added to `~/.bashrc`
 	
 	```bash
-	# Note that {cuda} should be changed according to the installed version on your machine, e.g., cuda-11
+	# Note that {cuda} should be replaced with the installed version on your machine, e.g., cuda-11
 	export CUDA_HOME=/usr/local/{cuda}
 	export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:$LD_LIBRARY_PATH
 	export PATH=${CUDA_HOME}/bin:${PATH} 

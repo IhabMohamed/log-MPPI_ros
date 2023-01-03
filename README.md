@@ -74,7 +74,7 @@ The `jackal_ros` package contains the common packages for Jackal, including Gaze
 This package is forked from [ethz-asl/deep_motion_planning](https://github.com/ethz-asl/deep_motion_planning) with very few modifications. It contains a mission control node that executes a user-defined mission. Therefore, a txt file is parsed and a sequence of commands is generated. This sequence is then processed step-by-step. For more details on the definition of a mission, please refer to the [README](mission_control/README.md) file in the package directory.
 
 ### mppi_control
-This node contains the implementation of both vanilla MPPI and log-MPPI control strategies. It subscribes to: (i) the 2D local costmap built by the robot on-board sensor for achieving a collision-free navigation and (ii) the set of desired poses published by the mission_control node; then, consequently, it publishes the control commands, namely, the linear and angular velocities of the robot.
+This node contains the implementation of both vanilla MPPI and log-MPPI control strategies. It subscribes to: (i) the 2D local costmap built by the robot on-board sensor for achieving a collision-free navigation and (ii) the set of desired poses published by the `mission_control` node; then, consequently, it publishes the control commands, namely, the linear and angular velocities of the robot.
 
 ### velodyne_simulator
 URDF description and Gazebo plugins to simulate Velodyne laser scanners. If you encountered a very slow-motion of the robot in Gazebo, there are two ways to tackle this issue:

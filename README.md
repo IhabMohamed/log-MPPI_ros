@@ -15,7 +15,7 @@ If you find this code useful in your research, please cite:
 
 I. S. Mohamed, K. Yin and L. Liu, "Autonomous Navigation of AGVs in Unknown Cluttered Environments: Log-MPPI Control Strategy," in IEEE Robotics and Automation Letters, vol. 7, no. 4, pp. 10240-10247, Oct. 2022.
 
-Paper: https://ieeexplore.ieee.org/document/9834098 
+Paper: https://ieeexplore.ieee.org/document/9834098 \
 Video: https://youtu.be/_uGWQEFJSN0
 
 Bibtex:

@@ -105,4 +105,5 @@ URDF description and Gazebo plugins to simulate Velodyne laser scanners. If you 
 
 ### Primary code maintainer:
 Ihab S. Mohamed (e-mail: mohamedi@iu.edu)
+Vehicle Autonomy and Intelligence Lab (VAIL), Indiana University - Bloomington, USA
 

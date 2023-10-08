@@ -8,6 +8,9 @@ With such a sampling strategy, we provide more efficient trajectories than the v
 
 ![](media/demo_mppi.gif "MPPI: 0.1 trees/m^2 forest-like env") 
 ![](media/demo_log-mppi.gif "log-MPPI: 0.2 trees/m^2 forest-like env")
+
+## Update:
+We are pleased to note that our log-MPPI is now included in the [mppic](https://github.com/artofnothingness/mppic) repository. To the best of our knowledge, this marks the first CPU-based MPPI implementation that can be compiled with ROS2 and has been optimized using vectorization and tensor operations. We extend our sincere thanks to Steve Macenski for his contribution. Link to `logmppi` Branch: https://github.com/artofnothingness/mppic/tree/logmppi
  
 ## Paper:
 

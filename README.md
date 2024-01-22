@@ -34,6 +34,10 @@ Bibtex:
   doi={10.1109/LRA.2022.3192772}
 }
 ```
+## Recent Work:
+Please find our more recent work in the following links:
+1. GP-MPPI: https://github.com/IhabMohamed/GP-MPPI
+2. U-MPPI: https://github.com/IhabMohamed/U-MPPI
 
 ## Software Requirements:
 * ROS installation

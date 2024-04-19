@@ -335,23 +335,27 @@ class mppiControllerNode():
         delta_x = desired_state[0] - current_state[0]
         delta_y = desired_state[1] - current_state[1]
         desired_heading = np.arctan2(delta_y, delta_x)
-        """ TODO: the following statements need to be reviewed and more tested, there might be 
-                something wrong in the calculation of the heading error for the four axes quarters """
+
         if ((desired_heading - current_state[2]) <
             (-np.pi / 2.0)) and ((desired_heading - current_state[2]) >
                                  (-3.0 * np.pi / 2.0)):
             desired_heading = desired_heading - np.pi
+            case = 1
         elif (((desired_heading - current_state[2]) > (np.pi / 2))
               and ((desired_heading - current_state[2]) <
                    (3.0 * np.pi / 2.0))):
             desired_heading = desired_heading + np.pi
+            case = 2
         elif ((desired_heading - current_state[2]) < (-3.0 * np.pi / 2.0)):
-            desired_heading = desired_heading - 2 * np.pi
-        elif ((desired_heading - current_state[2]) > (3.0 * np.pi / 2.0)):
             desired_heading = desired_heading + 2 * np.pi
+            case = 3
+        elif ((desired_heading - current_state[2]) > (3.0 * np.pi / 2.0)):
+            desired_heading = desired_heading - 2 * np.pi
+            case = 4
         else:
             desired_heading = desired_heading
-        return desired_heading
+            case = 5
+        return desired_heading, case
 
     """ @brief: The primary function for running the MPPI algorithm """
     def run_mppi(self):

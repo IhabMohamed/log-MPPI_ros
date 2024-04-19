@@ -391,7 +391,7 @@ class mppiControllerNode():
                         self.targets[2] = self.yaw_desired
                 else:
                     # Calculate the desired yaw angle (keep the robot heading towards the goal)
-                    desired_heading = self.headingAngle(
+                    desired_heading, case = self.headingAngle(
                         self.state, self.targets)
                     if self.distanceToGoal > self.minimumDistance:
                         self.targets[2] = desired_heading

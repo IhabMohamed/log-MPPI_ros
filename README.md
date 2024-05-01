@@ -1,6 +1,3 @@
-📢 **Contributions Welcome**: Would you like to contribute to our repository? Please feel free to reach out to us if you can help upgrade the repository to ROS2.
-
-
 # log-MPPI_ros
 
 This repository contains the ROS implementation of the Model Predictive Path Integral (MPPI) and log-MPPI control strategy using the [PyCUDA](https://documen.tician.de/pycuda/) module (namely, Python wrapper for Nvidia CUDA), with the aim of performing autonomous navigation of Autonomous Ground Vehicles (AGVs) in unknown cluttered environments. In this work, the 2D grid map is incorporated, as a local costmap, into the MPPI algorithm for performing collision-free navigation in either static or dynamic unknown cluttered environments.
@@ -14,7 +11,10 @@ With such a sampling strategy, we provide more efficient trajectories than the v
 
 ## Update (Incorporating log-MPPI into mppic, ROS2):
 We are pleased to note that our proposed **log-MPPI** is now included in the [mppic](https://github.com/artofnothingness/mppic) repository. To the best of our knowledge, this repo marks the first `CPU-based MPPI implementation` that can be compiled with **ROS2** and has been optimized using vectorization and tensor operations. We extend our sincere thanks to [Steve Macenski](https://github.com/SteveMacenski) for his contribution. Link to `logmppi` Branch: https://github.com/artofnothingness/mppic/tree/logmppi
- 
+
+ ## Contributions Welcome:
+📢 :rotating_light: :loudspeaker: Would you like to contribute to our repository? Please feel free to reach out to us if you can help upgrade the repository to ROS2 :rotating_light: :loudspeaker:
+
 ## Paper:
 
 If you find this code useful in your research, please cite:
